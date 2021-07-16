@@ -82,9 +82,22 @@ public class Character : MonoBehaviour
     /// </summary>
     public void GeneratePhysicalStatsStats()
     {
-        Debug.LogWarning("Generate Physical Stats has been called");
+        int Min = 1; // int minimum
+        int agilityMin = 2; // agility minimum set at 2 so that when we use the agility multiplier we dont get a value of 0.5
+        int Max = 10; // int max
 
-        // Let's set up agility, intelligence and strength to some default Random values.
+        agility = Random.Range(agilityMin, Max);
+
+        intelligence = Random.Range(Min, Max);
+
+        strength = Random.Range(Min, Max);
+
+        {
+            Debug.Log("Physical stats have been randomly generated. " + " Agility: " + agility + " Intelligience: " + intelligence + " Strength: " + strength);
+        }
+
+            Debug.LogWarning("Physical Stats randomly Generated");
+
     }
 
     /// <summary>
