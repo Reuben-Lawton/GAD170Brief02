@@ -33,6 +33,11 @@ public class Character : MonoBehaviour
     public int xpThreshold = 10;
 
     /// <summary>
+    ///  The amount of XP to distribute to the stats.
+    /// </summary>
+    public int xpToDistribute = 0;
+
+    /// <summary>
     /// Our variables used to determine our fighting power.
     /// </summary>
     public int style;
@@ -205,6 +210,24 @@ public class Character : MonoBehaviour
     /// </summary>
     public void AddXP(int xpGained)
     {
+        int minXp = 1;
+        int maxXp = 85;
+        if (xpGained == 0) // if no XP gained go to next if statement
+        {
+            Debug.Log("No XP achieved, try harder!");
+        }
+        else if (xpGained >= minXp && xpGained <= maxXp) // if Xp is gained between minimum of 1 and maximum of 85 then add xp to current xp, then check to see if we can level up
+        {
+            currentXp += (xpGained);
+            LevelUp();
+            Debug.Log("XP gained is : " + xpGained + " so your current XP is  : " + currentXp);
+        }
+
+        xpToDistribute = xpGained; // using xp to distribute taken from the xp gained in battle
+        
+
+
+
         Debug.LogWarning("This character needs some xp to be given, the xpGained from the fight was: " + xpGained);
         // we probably want to do something with the xpGained.
 

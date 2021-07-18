@@ -9,9 +9,10 @@ using UnityEngine;
 /// </summary>
 public class FightManager : MonoBehaviour
 {
+    private const int V = 2;
     public BattleSystem battleSystem; //A reference to our battleSystem script in our scene
     public Color drawCol = Color.gray; // A colour you might want to set the battle log message to if it's a draw.
-    private float fightAnimTime = 2; //An amount to wait between initiating the fight, and the fight begining, so we can see some of that sick dancing.
+    private float fightAnimTime = V; //An amount to wait between initiating the fight, and the fight begining, so we can see some of that sick dancing.
 
     /// <summary>
     /// Returns a float of the percentage chance to win the fight based on your characters current stats.
@@ -28,26 +29,21 @@ public class FightManager : MonoBehaviour
         if (charOnePoints <= 0 || charTwoPoints <= 0)
         {
             Debug.LogWarning(" Simulate battle called; but char 1 or char 2 battle points is 0, most likely the logic has not be setup for this yet");
-                    }
+        }
         else if(charOnePoints > charTwoPoints)
         {
             percentWonBy = Mathf.Round((float)(charOnePoints - charTwoPoints) / (float)100);
             Debug.Log("Character One Points is : " + charOnePoints + " which is higher then Character Two Points : " + charTwoPoints + " . Therefore Character One is the winner!");
-            return percentWonBy;
         }
         else if (charTwoPoints > charOnePoints)
         {
             percentWonBy = Mathf.Round((float)(charTwoPoints - charOnePoints) / (float)100);
             Debug.Log("Character Two Points is : " + charTwoPoints + " which is higher then Character One Points : " + charOnePoints + " . Therefore Character Two is the winner!");
-            return percentWonBy;
         }
 
-        // we probably want to compare our powerlevels...hope they aren't over 9000.
-        // we need to return a normalised (decimal) value....how much do you remember about percentages?
-        // don't forget that we are returning a float...but diving 2 ints...what happens?
+        Debug.LogWarning("Simulate battle called and results have been returned as normalised value");
 
-        Debug.LogWarning("Simulate battle called, but the logic hasn't been set up yet, so defaulting to 0");
-        // return 0;
+        return percentWonBy;
     }
 
 
