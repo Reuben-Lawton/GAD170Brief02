@@ -28,6 +28,16 @@ public class FightManager : MonoBehaviour
         {
             Debug.LogWarning(" Simulate battle called; but char 1 or char 2 battle points is 0, most likely the logic has not be setup for this yet");
         }
+        else if(charOnePoints > charTwoPoints)
+        {
+
+            Debug.Log("Character One Points is : " + charOnePoints + " which is higher then Character Two Points : " + charTwoPoints + " . Therefore Character One is the winner!");
+        }
+        else if (charTwoPoints > charOnePoints)
+        {
+
+            Debug.Log("Character Two Points is : " + charTwoPoints + " which is higher then Character One Points : " + charOnePoints + " . Therefore Character Two is the winner!");
+        }
 
         // we probably want to compare our powerlevels...hope they aren't over 9000.
         // we need to return a normalised (decimal) value....how much do you remember about percentages?
@@ -42,7 +52,6 @@ public class FightManager : MonoBehaviour
     //You just need determine who wins/loses/draws etc.
     IEnumerator Attack(Character teamACharacter, Character teamBCharacter)
     {
-
         Character winner = teamACharacter;//defaulting the winner to TeamA.
         Character defeated = teamBCharacter;//defaulting the loser to TeamB.
         float outcome = 0;// the outcome from the fight, i.e. the % that the winner has won by...fractions could help us calculate this, but start with whole numbers i.e. 0 = draw, and 1 = 100% win.

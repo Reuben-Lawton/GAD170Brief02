@@ -26,6 +26,7 @@ public class CharacterNameGenerator : MonoBehaviour
     /// </summary>
     public void CreateNames()
     {
+        
         Debug.LogWarning("Create Names Called");
         // we probably want to set our 4 lists to some default values
     }

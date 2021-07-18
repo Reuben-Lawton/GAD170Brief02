@@ -37,7 +37,16 @@ public class DanceTeam : MonoBehaviour
     /// <param name="dancer"></param>
     public void RemoveDancerFromActive(Character dancer)
     {
-        Debug.LogWarning("RemoveFromActive called, it needs to take the dancer out of the active dancers list");  
+
+        //if(Character HP is <= 0)
+                {
+              //  then remove that character from the active lists
+                          //                 Debug.Log("Dance Character: " + character.their number +  " Has no hp and is out of the comp")
+                                                
+        }
+
+        Debug.LogWarning("RemoveFromActive called, it needs to take the dancer out of the active dancers list");
+
         // This gets called when our team mate dies :(
         // We probably want to remove the dancer passed in from our active dancer list.
     }
