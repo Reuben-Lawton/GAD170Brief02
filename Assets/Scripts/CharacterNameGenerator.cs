@@ -10,16 +10,17 @@ using UnityEngine;
 public class CharacterNameGenerator : MonoBehaviour
 {
      [Header("Possible first names")]
-    private List<string> firstNames; // These appear in the inspector, you should be assigning names to these in the inspector.
+    private List<string> firstNames = new List<string>(){"Thomas","Billy","Dick","Charlie","Frankie","Milson"}; 
+    // These appear in the inspector, you should be assigning names to these in the inspector.
 
     [Header("Possible last names")]
-    private List<string> lastNames;
+    private List<string> lastNames = new List<string>() { "Williamson", "Davidson", "Frankston", "McGregor", "Davis", "McKraken"};
 
     [Header("Possible nicknames")]
-    private List<string> nicknames;
+    private List<string> nicknames = new List<string>() { "The Tank", "The Fixer", "The Kid", "Rough & Tumble", "Rogue Mania", "The Dominator" };
 
     [Header("Possible adjectives to describe the character")]
-    private List<string> descriptors;
+    private List<string> descriptors = new List<string>() { "Loose", "Running Man", "Flippin", "Lucky", "Stampin", "Freestylin"};
 
 
     /// <summary>
@@ -28,34 +29,15 @@ public class CharacterNameGenerator : MonoBehaviour
     /// </summary>
     public void CreateNames()
     {
-        firstNames.Add("Thomas");
-        firstNames.Add("Billy");
-        firstNames.Add("Dick");
-        firstNames.Add("Charlie");
-        firstNames.Add("Frankie");
-        firstNames.Add("Milson");
+        string characterFullNameTest;
 
-        lastNames.Add("Williamson");
-        lastNames.Add("Davidson");
-        lastNames.Add("Frankston");
-        lastNames.Add("McGregor");
-        lastNames.Add("Davis");
-        lastNames.Add("McKraken");
+        characterFullNameTest = ("The player is " + descriptors[Random.Range(0, descriptors.Count)] + firstNames[Random.Range(0, firstNames.Count)] + nicknames[Random.Range(0, nicknames.Count)] + lastNames[Random.Range(0, lastNames.Count)]);
+                Debug.Log("test to see if names work " + nicknames[Random.Range(0, nicknames.Count)]);
 
-        nicknames.Add("The Tank");
-        nicknames.Add("The Fixer");
-        nicknames.Add("The Kid");
-        nicknames.Add("Rough & Tumble");
-        nicknames.Add("Rogue Mania");
-        nicknames.Add("The Dominator");
+        Debug.Log("test to see if names work " + characterFullNameTest);
 
-        descriptors.Add("Loose");
-        descriptors.Add("Running Man");
-        descriptors.Add("Flippin");
-        descriptors.Add("Lucky");
-        descriptors.Add("Stampin");
-        descriptors.Add("Freestylin");
 
+        Debug.Log("test to see if names work " + nicknames[Random.Range(0, nicknames.Count)]);  
 
         Debug.LogWarning("Create Names Called");
         // we probably want to set our 4 lists to some default values
@@ -76,11 +58,12 @@ public class CharacterNameGenerator : MonoBehaviour
         {
             //For every name we need to generate, we need to assign a random first name, last name, nickname and descriptor to each.
             //Below is an example of setting the first name of the emptyName variable to the string "Blank".
-            emptyName.firstName = 
+            emptyName.firstName = firstNames[Random.Range(0, firstNames.Count)];
+            emptyName.lastName = lastNames[Random.Range(0, lastNames.Count)];
+            emptyName.nickname = nicknames[Random.Range(0, nicknames.Count)];
+            emptyName.descriptor = descriptors[Random.Range(0, descriptors.Count)];
             names[i] = emptyName;
-
-            [Random.Range(0, myFirstIntList.Count)]
-
+                        
 
         }
 

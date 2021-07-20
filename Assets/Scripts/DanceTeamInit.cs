@@ -23,12 +23,7 @@ public class DanceTeamInit : MonoBehaviour
     public void InitTeams()
     {
         teamA.SetTroupeName(name = "The Misfits");
-        teamB.SetTroupeName(name = "The Rhythm Redeemers");
-
-        teamA.InitaliseTeamFromNames()
-
-
-           
+        teamB.SetTroupeName(name = "The Rhythm Redeemers");                        
 
 
         Debug.LogWarning("InitTeams called, needs to generate names for the teams and set them with teamA.SetTroupeName and teamA.InitialiseTeamFromNames");
