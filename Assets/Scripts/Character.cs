@@ -167,8 +167,8 @@ public class Character : MonoBehaviour
     /// </summary>
     public void DealDamage(float amount)
     {
-
-        if(DanceTeam script calls for a removal of character do something about it here)
+        
+        //if(DanceTeam script calls for a removal of character do something about it here)
         // we probably want to do a check in here to see if the character is dead or not...
         // if they are we probably want to remove them from their team's active dancer list...sure wish there was a function in their dance team  script we could use for this.
     }
@@ -219,12 +219,13 @@ public class Character : MonoBehaviour
         else if (xpGained >= minXp && xpGained <= maxXp) // if Xp is gained between minimum of 1 and maximum of 85 then add xp to current xp, then check to see if we can level up
         {
             currentXp += (xpGained);
-            LevelUp();
             Debug.Log("XP gained is : " + xpGained + " so your current XP is  : " + currentXp);
         }
 
         xpToDistribute = xpGained; // using xp to distribute taken from the xp gained in battle
-        
+
+
+        LevelUp();
 
 
 
@@ -241,6 +242,9 @@ public class Character : MonoBehaviour
     /// </summary>
     private void LevelUp()
     {
+        
+
+
         Debug.LogWarning("Level up has been called");
         // we probs want to increase our level....
         // As well as probably want to increase our threshold for when we should level up...based on our current new level
@@ -251,45 +255,51 @@ public class Character : MonoBehaviour
     /// A function used to assign a random amount of points ot each of our skills.
     /// </summary>
 
-/*
- * If you want a very simple code to use, I would go like this:
+    /*
+     * If you want a very simple code to use, I would go like this:
 
-int numberOfPointsToDistribute = 150;
-int numberOfAttributes = 3;
-int pointsLeft = numberOfPointsToDistribute;
-for(int i = 0; i < numberOfAttributes; i++)
-{
- int randomPoints = Random.Range(0, pointsLeft);
- attributes[i] = randomPoints;
- pointsLeft -= randomPoints;
-}
-One flaw of this script is that the distribution is not evenly made for each attributes: the very first one have higher chance of having the maximum number (since random would pick from [0] to [150]) than the last one (since random would pick from [0 + attribute_1 + attribute_2 + ... + attribute_n-1] to [150]).
+    int numberOfPointsToDistribute = 150;
+    int numberOfAttributes = 3;
+    int pointsLeft = numberOfPointsToDistribute;
+    for(int i = 0; i < numberOfAttributes; i++)
+    {
+     int randomPoints = Random.Range(0, pointsLeft);
+     attributes[i] = randomPoints;
+     pointsLeft -= randomPoints;
+    }
+    One flaw of this script is that the distribution is not evenly made for each attributes: the very first one have higher chance of having the maximum number (since random would pick from [0] to [150]) than the last one (since random would pick from [0 + attribute_1 + attribute_2 + ... + attribute_n-1] to [150]).
 
-If you want a more even way of doing it, I would go like that:
+    If you want a more even way of doing it, I would go like that:
 
-Get the average value for each attributes (in our case, 150 / 3 = 50)
+    Get the average value for each attributes (in our case, 150 / 3 = 50)
 
-For each attribute, give X points, where X = Mathf.Clamp(0, 150, average + Random.Range(-average, average))
-*/
-
-
+    For each attribute, give X points, where X = Mathf.Clamp(0, 150, average + Random.Range(-average, average))
+    */
 
 
 
-public void DistributePhysicalStatsOnLevelUp(int PointsPool)
-{
-    Debug.LogWarning("DistributePhysicalStatsOnLevelUp has been called " + PointsPool);
-    // let's share these points somewhat evenly or based on some forumal to increase our current physical stats
-    // then let's recalculate our dancing stats again to process and update the new values.
-}
+
+
+    public void DistributePhysicalStatsOnLevelUp(int PointsPool)
+    {
 
 
 
-/// <summary>
-/// Is called inside of our DanceTeam.cs is used to set the characters name!
-/// </summary>
-/// <param name="characterName"></param>
-public void AssignName(CharacterName characterName)
+
+        Debug.LogWarning("DistributePhysicalStatsOnLevelUp has been called " + PointsPool);
+        // let's share these points somewhat evenly or based on some forumla to increase our current physical stats
+        // then let's recalculate our dancing stats again to process and update the new values.
+
+        CalculateDancingStats();
+    }
+
+
+
+    /// <summary>
+    /// Is called inside of our DanceTeam.cs is used to set the characters name!
+    /// </summary>
+    /// <param name="characterName"></param>
+    public void AssignName(CharacterName characterName)
 {
     charName = characterName;
     if(nickText != null)

@@ -27,6 +27,10 @@ public class DanceTeam : MonoBehaviour
     /// <param name="dancer"></param>
     public void AddNewDancer(Character dancer)
     {
+       
+
+
+
         Debug.LogWarning("AddNewDancer called, it needs to put dancer in both lists and set the dancers team.");
         // we probably want to add our new dancers to our all dancers and our active dancers lists here..
     }
@@ -38,10 +42,17 @@ public class DanceTeam : MonoBehaviour
     public void RemoveDancerFromActive(Character dancer)
     {
 
-        //if(Character HP is <= 0)
-                {
-              //  then remove that character from the active lists
-                          //                 Debug.Log("Dance Character: " + character.their number +  " Has no hp and is out of the comp")
+        if(dancer.mojoRemaining <= 0)
+        {
+
+
+            //  then remove that character from the active lists
+            //                 Debug.Log("Dance Character: " + character.their number +  " Has no hp and is out of the comp")
+
+        }
+
+        {
+             
                                                 
         }
 
@@ -52,14 +63,14 @@ public class DanceTeam : MonoBehaviour
     }
 
     /// <summary>
-    /// Takes in a dancer prefab to spawn, a direction right or left this Directio is an enum, and an Array of Names
+    /// Takes in a dancer prefab to spawn, a direction right or left this Direction is an enum, and an Array of Names
     /// </summary>
     /// <param name="dancerPrefab"></param>
     /// <param name="direction"></param>
     /// <param name="names"></param>
     public void InitaliseTeamFromNames(GameObject dancerPrefab, Direction screenDirection, CharacterName[] names)
     {
-        for (int i = 0; i < names.Length; i++)
+        for (int i = 3; i < names.Length; i++)
         {
             //make one
             var newDancer = Instantiate(dancerPrefab, lineUpStart.position + lineUpStart.right * i * DancerSpaceing * ((int)screenDirection), dancerPrefab.transform.rotation);
@@ -88,9 +99,9 @@ public class DanceTeam : MonoBehaviour
         }
     }
 
-   /// <summary>
-   /// Enables the win effects for the winning dancer/team
-   /// </summary>
+    /// <summary>
+    /// Enables the win effects for the winning dancer/team
+    /// </summary>
     public void EnableWinEffects()
     {
         if (fightWinContainer != null)
