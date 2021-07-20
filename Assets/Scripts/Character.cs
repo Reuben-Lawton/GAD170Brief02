@@ -12,6 +12,7 @@ public class Character : MonoBehaviour
 {
     public DanceTeam danceTeam; // Call a reference to the DanceTeam script
     public CharacterName charName; // This is a reference to an instance of the characters name script.
+    public FightManager fightDoDamage; // reference to fightManager script
 
     [Range(0.0f,1.0f)]
     public float mojoRemaining = 1; // This is the characters hp this is a float 0-100 but is normalised to 0.0 - 1.0;
@@ -142,7 +143,7 @@ public class Character : MonoBehaviour
         // Essentially we want to set our percentage to win, to be a percentage using our normalised value (decimal value of a fraction)
         // How can we convert out normalised value into a whole number?
               
-
+        const int r = 100;
 
         float maxLevel = (float)(maxStyle + maxLuck + maxRhythm); // used to calculate a max level to compare to player level
         float playerLevel = (float)(style + luck + rhythm); // players current level that we'll use 
@@ -153,7 +154,7 @@ public class Character : MonoBehaviour
             Debug.Log("Player normalised value between 0.0 and 1.0 is :" + normalisedValue);
         }
 
-        perecentageChanceToWin = (int)(normalisedValue * 100); // multiply the normalised value by 100 to give us a percent chance to win
+        perecentageChanceToWin = (int)(normalisedValue * r); // multiply the normalised value by 100 to give us a percent chance to win
         {
             Debug.Log("Max Level: " + maxLevel + "Player is currently at: " + playerLevel + ". Their percent chance to win is:  " + " % " + perecentageChanceToWin);
         }

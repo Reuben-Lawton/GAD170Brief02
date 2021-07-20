@@ -63,7 +63,6 @@ public class CharacterNameGenerator : MonoBehaviour
             emptyName.nickname = nicknames[Random.Range(0, nicknames.Count)];
             emptyName.descriptor = descriptors[Random.Range(0, descriptors.Count)];
             names[i] = emptyName;
-                        
 
         }
 

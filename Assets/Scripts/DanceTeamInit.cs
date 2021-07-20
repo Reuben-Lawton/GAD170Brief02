@@ -22,8 +22,18 @@ public class DanceTeamInit : MonoBehaviour
     /// </summary>
     public void InitTeams()
     {
-        teamA.SetTroupeName(name = "The Misfits");
-        teamB.SetTroupeName(name = "The Rhythm Redeemers");                        
+        nameGenerator.
+        teamACharacterNames = FindObjectsOfType[CharacterName]();
+
+
+        for (int i = 0; i < length; i++)
+        {
+
+        }
+
+       // teamA.SetTroupeName(name = "The Misfits");
+       
+      // teamB.SetTroupeName(name = "The Rhythm Redeemers");                        
 
 
         Debug.LogWarning("InitTeams called, needs to generate names for the teams and set them with teamA.SetTroupeName and teamA.InitialiseTeamFromNames");

@@ -98,7 +98,6 @@ public class FightManager : MonoBehaviour
             BattleLog.Log("Team B Character has won the Fight!" + outcome, drawCol);
         }
 
-
         Debug.LogWarning("Attack called, may want to use the BattleLog.Log() to report the dancers and the outcome of their dance off.");
 
         // Pass on the winner/loser and the outcome to our fight completed function.
