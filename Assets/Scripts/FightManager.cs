@@ -9,10 +9,9 @@ using UnityEngine;
 /// </summary>
 public class FightManager : MonoBehaviour
 {
-    private const int V = 2;
     public BattleSystem battleSystem; //A reference to our battleSystem script in our scene
     public Color drawCol = Color.gray; // A colour you might want to set the battle log message to if it's a draw.
-    private float fightAnimTime = V; //An amount to wait between initiating the fight, and the fight begining, so we can see some of that sick dancing.
+    private float fightAnimTime = 2; //An amount to wait between initiating the fight, and the fight begining, so we can see some of that sick dancing.
 
     /// <summary>
     /// Returns a float of the percentage chance to win the fight based on your characters current stats.
@@ -24,26 +23,18 @@ public class FightManager : MonoBehaviour
     {
         int charOnePoints = charOne.ReturnDancePowerLevel(); // our current powerlevel
         int charTwoPoints = charTwo.ReturnDancePowerLevel(); // our opponents current power level
-        float percentWonBy = 0.0f;
 
         if (charOnePoints <= 0 || charTwoPoints <= 0)
         {
             Debug.LogWarning(" Simulate battle called; but char 1 or char 2 battle points is 0, most likely the logic has not be setup for this yet");
         }
-        else if(charOnePoints > charTwoPoints)
-        {
-            percentWonBy = Mathf.Round((float)(charOnePoints - charTwoPoints) / (float)100);
-            Debug.Log("Character One Points is : " + charOnePoints + " which is higher then Character Two Points : " + charTwoPoints + " . Therefore Character One is the winner!");
-        }
-        else if (charTwoPoints > charOnePoints)
-        {
-            percentWonBy = Mathf.Round((float)(charTwoPoints - charOnePoints) / (float)100);
-            Debug.Log("Character Two Points is : " + charTwoPoints + " which is higher then Character One Points : " + charOnePoints + " . Therefore Character Two is the winner!");
-        }
 
-        Debug.LogWarning("Simulate battle called and results have been returned as normalised value");
+        // we probably want to compare our powerlevels...hope they aren't over 9000.
+        // we need to return a normalised (decimal) value....how much do you remember about percentages?
+        // don't forget that we are returning a float...but diving 2 ints...what happens?
 
-        return percentWonBy;
+        Debug.LogWarning("Simulate battle called, but the logic hasn't been set up yet, so defaulting to 0");
+        return 0;
     }
 
 
@@ -51,6 +42,7 @@ public class FightManager : MonoBehaviour
     //You just need determine who wins/loses/draws etc.
     IEnumerator Attack(Character teamACharacter, Character teamBCharacter)
     {
+
         Character winner = teamACharacter;//defaulting the winner to TeamA.
         Character defeated = teamBCharacter;//defaulting the loser to TeamB.
         float outcome = 0;// the outcome from the fight, i.e. the % that the winner has won by...fractions could help us calculate this, but start with whole numbers i.e. 0 = draw, and 1 = 100% win.
@@ -73,30 +65,7 @@ public class FightManager : MonoBehaviour
         winner = teamACharacter;
         defeated = teamBCharacter;
         outcome = 0;// this really needs to be a fraction of the win vs the loser, but if it's a draw 0 is okay.
-
-        if (teamABattlePoints == teamBBattlePoints) // Both Team Characters have the same amount of Battle points - Draw
-        {
-            outcome = 0;            
-            Debug.Log("Team A Character has : " + teamABattlePoints + " which is the same as Team B Character : " + teamBBattlePoints + " . So Draw, and fight once again.");
-            BattleLog.Log("Fight is a draw!", drawCol);
-
-        }
-        else if (teamABattlePoints > teamBBattlePoints) // Team A Character has more Battle points then Team B Character
-        {
-            outcome = Mathf.Round((teamABattlePoints - teamBBattlePoints) / (float)100);
-            winner = teamACharacter;
-            defeated = teamBCharacter;
-            Debug.Log("Team A Character has : " + teamABattlePoints + " which is more than Team B Character : " + teamBBattlePoints + " . So Team A Character wins the Fight.");
-            BattleLog.Log("Team A Character has won the Fight!" + outcome, drawCol);
-        }
-        else if (teamBBattlePoints > teamABattlePoints) // Team B Character has more Battle points then Team A Character
-        {
-            outcome = Mathf.Round((teamBBattlePoints - teamABattlePoints) / (float)100);
-            winner = teamBCharacter;
-            defeated = teamACharacter;
-            Debug.Log("Team B Character has : " + teamBBattlePoints + " which is more than Team A Character : " + teamABattlePoints + " . So Team B Character wins the Fight.");
-            BattleLog.Log("Team B Character has won the Fight!" + outcome, drawCol);
-        }
+        BattleLog.Log("Fight is a draw!", drawCol);
 
         Debug.LogWarning("Attack called, may want to use the BattleLog.Log() to report the dancers and the outcome of their dance off.");
 
@@ -105,7 +74,7 @@ public class FightManager : MonoBehaviour
         yield return null;
     }
 
-    #region Pre-Existing - No Mods Required
+    #region Pre-Existing - No Modes Required
     /// <summary>
     /// Is called when two dancers have been selected and begins a fight!
     /// </summary>

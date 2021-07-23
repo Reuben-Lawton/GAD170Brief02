@@ -39,7 +39,7 @@ public class BattleSystem : MonoBehaviour
             // we could also get fancy here by using the simulate battle first if we wanted to.
             //fightManager.Fight(charA, charB);
         }
-        else if (teamA.activeDancers.Count < 1 || teamB.activeDancers.Count <1)
+        else
         {
             // IF we get to here...then we have a team has won...winner winner chicken dinner.
             DanceTeam winner = null; // null is the same as saying nothing...often seen as a null reference in your logs.
@@ -51,7 +51,8 @@ public class BattleSystem : MonoBehaviour
             winner.EnableWinEffects();
             BattleLog.Log(winner.danceTeamName.ToString(), winner.teamColor);
 
-            Debug.Log("DoRound called, but we have a winner so Game Over");          
+            Debug.Log("DoRound called, but we have a winner so Game Over");
+          
         }
     }
 
