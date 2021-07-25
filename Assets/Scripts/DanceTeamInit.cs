@@ -35,7 +35,7 @@ public class DanceTeamInit : MonoBehaviour
 
         teamA.InitaliseTeamFromNames(dancerPrefab, DanceTeam.Direction.Left, teamACharacterNames);
 
-        teamB.SetTroupeName("Leaping Lizards");
+        teamB.SetTroupeName("Elite Force Crew");
         // We need to generate some character names for our teams to use from our CharacterNameGenerator.
 
         nameGenerator.ReturnTeamCharacterNames(dancersPerSide);
