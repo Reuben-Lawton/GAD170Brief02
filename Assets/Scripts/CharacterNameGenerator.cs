@@ -87,6 +87,7 @@ public class CharacterNameGenerator : MonoBehaviour
         // we probably want to set our 4 lists to some default values
     }
 
+
     /// <summary>
     /// Returns an Array of Character Names based on the number of namesNeeded.
     /// </summary>

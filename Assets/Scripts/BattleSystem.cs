@@ -27,12 +27,14 @@ public class BattleSystem : MonoBehaviour
         //checking for no dancers on either team
         if(teamA.allDancers.Count == 0 && teamB.allDancers.Count == 0)
         {
+           // teamA.AddNewDancer 
             Debug.LogWarning("DoRound called, but there are no dancers on either team. DanceTeamInit needs to be completed");
             // This will be called if there are 0 dancers on both teams.
 
         }
         else if (teamA.activeDancers.Count > 0 && teamB.activeDancers.Count > 0)
         {
+            
             Debug.LogWarning("DoRound called, it needs to select a dancer from each team to dance off and put in the FightEventData below");
             //You need to select two random or engineered random characters to fight...so one from team a and one from team b....
             //We then need to pass in the two selected dancers into fightManager.Fight(CharacterA,CharacterB);

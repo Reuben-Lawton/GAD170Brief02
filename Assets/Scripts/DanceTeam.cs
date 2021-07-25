@@ -27,6 +27,21 @@ public class DanceTeam : MonoBehaviour
     /// <param name="dancer"></param>
     public void AddNewDancer(Character dancer)
     {
+        if(allDancers != null)
+        {
+            for (int i = 0; i < allDancers.Count ; i++)
+            {
+                allDancers.Add(dancer);
+            }
+        }
+        if(activeDancers != null)
+        {
+            for (int i = 0; i < activeDancers.Count; i++)
+            {
+                activeDancers.Add(dancer);
+            }
+            activeDancers.Add(dancer);
+        }
         Debug.LogWarning("AddNewDancer called, it needs to put dancer in both lists and set the dancers team.");
         // we probably want to add our new dancers to our all dancers and our active dancers lists here..
     }
@@ -37,13 +52,14 @@ public class DanceTeam : MonoBehaviour
     /// <param name="dancer"></param>
     public void RemoveDancerFromActive(Character dancer)
     {
+        activeDancers.Remove(dancer);
         Debug.LogWarning("RemoveFromActive called, it needs to take the dancer out of the active dancers list");  
         // This gets called when our team mate dies :(
         // We probably want to remove the dancer passed in from our active dancer list.
     }
 
     /// <summary>
-    /// Takes in a dancer prefab to spawn, a direction right or left this Directio is an enum, and an Array of Names
+    /// Takes in a dancer prefab to spawn, a direction right or left this Direction is an enum, and an Array of Names
     /// </summary>
     /// <param name="dancerPrefab"></param>
     /// <param name="direction"></param>
