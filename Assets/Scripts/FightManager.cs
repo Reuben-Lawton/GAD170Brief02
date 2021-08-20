@@ -42,13 +42,8 @@ public class FightManager : MonoBehaviour
             Debug.Log("Character Two Points is : " + charTwoPoints + " which is higher then Character One Points : " + charOnePoints + " . Therefore Character Two is the winner!");
         }
 
-        
-
-
         Debug.LogWarning("Simulate battle called and results have been returned as normalised value");
-        // we probably want to compare our powerlevels...hope they aren't over 9000.
-        // we need to return a normalised (decimal) value....how much do you remember about percentages?
-        // don't forget that we are returning a float...but diving 2 ints...what happens?
+
         return percentWonBy;
 
     }
@@ -58,6 +53,7 @@ public class FightManager : MonoBehaviour
     //You just need determine who wins/loses/draws etc.
     IEnumerator Attack(Character teamACharacter, Character teamBCharacter)
     {
+        SimulateBattle(teamACharacter,teamBCharacter);
         Character winner = teamACharacter;//defaulting the winner to TeamA.
         Character defeated = teamBCharacter;//defaulting the loser to TeamB.
         float outcome = 0;// the outcome from the fight, i.e. the % that the winner has won by...fractions could help us calculate this, but start with whole numbers i.e. 0 = draw, and 1 = 100% win.
@@ -104,9 +100,7 @@ public class FightManager : MonoBehaviour
         }
 
         Debug.LogWarning("Attack called, may want to use the BattleLog.Log() to report the dancers and the outcome of their dance off.");
-
-        
-
+               
         // Pass on the winner/loser and the outcome to our fight completed function.
         FightCompleted(winner, defeated, outcome);
         yield return null;

@@ -179,8 +179,7 @@ public class Character : MonoBehaviour
         perecentageChanceToWin = (int)(normalisedValue * r); // multiply the normalised value by 100 to give us a percent chance to win
         {
             string dMessage = ("Max Level: " + maxLevel + "Player is currently at: " + playerLevel + ". Their percent chance to win is:  " + " % " + perecentageChanceToWin);
-            Debug.Log(dMessage);
-            
+            Debug.Log(dMessage); 
             
         }
 
@@ -194,15 +193,20 @@ public class Character : MonoBehaviour
     public void DealDamage(float amount)
     {
         
-        
-        
-        /*
-        else if (danceTeam.activeDancers == mojoRemaining <= 0)
+        if(mojoRemaining <= 1 || mojoRemaining > 0) // if mojo is 100 ie 1 then take away the float  
         {
-            RemoveDancerFromActive();
-
+            mojoRemaining = mojoRemaining - amount;
+            Debug.Log("The character has " + mojoRemaining + " mojo left.");
         }
-        */
+
+
+        if (mojoRemaining <= 0)  // if mojo is less then or equal to 0 then remove dancer 
+
+        {
+            myTeam.RemoveDancerFromActive(this);
+            Debug.Log("Removes dancer from active list when they have no mojo remaining");
+        }
+
         // we probably want to do a check in here to see if the character is dead or not...
         // if they are we probably want to remove them from their team's active dancer list...sure wish there was a function in their dance team  script we could use for this.
     }
@@ -255,8 +259,6 @@ public class Character : MonoBehaviour
         }
 
         xpToDistribute = xpGained; // using xp to distribute taken from the xp gained in battle
-
-        DealDamage(0.1f);
 
         LevelUp();
         Debug.LogWarning("This character needs some xp to be given, the xpGained from the fight was: " + xpGained);

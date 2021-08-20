@@ -26,24 +26,12 @@ public class DanceTeam : MonoBehaviour
     /// </summary>
     /// <param name="dancer"></param>
     public void AddNewDancer(Character dancer)
-    {
-        if(allDancers != null)
-        {
-            for (int i = 0; i < allDancers.Count ; i++)
-            {
-                allDancers.Add(dancer);
-            }
-        }
-        if(activeDancers != null)
-        {
-            for (int i = 0; i < activeDancers.Count; i++)
-            {
-                activeDancers.Add(dancer);
-            }
-            activeDancers.Add(dancer);
-        }
-        Debug.LogWarning("AddNewDancer called, it needs to put dancer in both lists and set the dancers team.");
-        // we probably want to add our new dancers to our all dancers and our active dancers lists here..
+    {       
+        allDancers.Add(dancer);
+               
+        activeDancers.Add(dancer);
+      
+        Debug.LogWarning("AddNewDancer called, Dancer is added to both lists and set the dancers team.");
     }
 
     /// <summary>

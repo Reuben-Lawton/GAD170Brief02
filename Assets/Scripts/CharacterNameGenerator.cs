@@ -11,13 +11,13 @@ public class CharacterNameGenerator : MonoBehaviour
 {
  
     [Header("Possible first names")]
-    private List<string> firstNames; // These appear in the inspector, you should be assigning names to these in the inspector.
+    private List<string> firstNames = new List<string> () ; // These appear in the inspector, you should be assigning names to these in the inspector.
     [Header("Possible last names")]
-    private List<string> lastNames;
+    private List<string> lastNames = new List<string>();
     [Header("Possible nicknames")]
-    private List<string> nicknames;
+    private List<string> nicknames = new List<string>();
     [Header("Possible adjectives to describe the character")]
-    private List<string> descriptors;
+    private List<string> descriptors = new List<string>();
 
     public string randomDescriptor;
     public string randomFirstName;
@@ -30,7 +30,7 @@ public class CharacterNameGenerator : MonoBehaviour
     /// </summary>
     public void CreateNames()
     {
-        if (descriptors != null)
+        if (descriptors.Count <= 0)
         {
             descriptors.Add("Stealthy");
             descriptors.Add("Stylin");
@@ -38,11 +38,11 @@ public class CharacterNameGenerator : MonoBehaviour
             descriptors.Add("Crazy Legs");
             descriptors.Add("Wild Style");
             descriptors.Add("Fearless");
-            randomDescriptor = descriptors[Random.Range(0, descriptors.Count)];
+            
 
             Debug.Log("Added some descriptors to the list, here is a random Descriptor: " + randomDescriptor);
         }
-        if (firstNames != null)
+        if (firstNames.Count <=0)
         {
             firstNames.Add("Norris");
             firstNames.Add("Kenny");
@@ -51,11 +51,9 @@ public class CharacterNameGenerator : MonoBehaviour
             firstNames.Add("Marlon");
             firstNames.Add("Chucky");
 
-            randomFirstName = firstNames[Random.Range(0, firstNames.Count)];
-
-            Debug.Log("Added some First Names to the list, here is a random First Name: " + randomFirstName);
+                       Debug.Log("Added some First Names to the list, here is a random First Name: " + randomFirstName);
         }
-        if (nicknames != null)
+        if (nicknames.Count <= 0)
         {
             nicknames.Add("Swoosh");
             nicknames.Add("Footwork");
@@ -64,12 +62,11 @@ public class CharacterNameGenerator : MonoBehaviour
             nicknames.Add("Number 11");
             nicknames.Add("Budda Stretch");
 
-            randomNickName = nicknames[Random.Range(0, nicknames.Count)];
 
             Debug.Log("Added some Nick Names to the list, here is a random Nick Name: " + randomNickName);
 
         }
-        if (lastNames != null)
+       if (lastNames.Count <= 0)
         {
             lastNames.Add("Jackson");
             lastNames.Add("Campbell");
@@ -78,13 +75,11 @@ public class CharacterNameGenerator : MonoBehaviour
             lastNames.Add("Klapow");
             lastNames.Add("Ortega");
 
-            randomLastName = lastNames[Random.Range(0, lastNames.Count)];
             Debug.Log("Added some Last Names to the list, here is a random Last Name: " + randomLastName);
         }
 
 
             Debug.LogWarning("Create Names Called");
-        // we probably want to set our 4 lists to some default values
     }
 
 
@@ -104,10 +99,10 @@ public class CharacterNameGenerator : MonoBehaviour
             //For every name we need to generate, we need to assign a random first name, last name, nickname and descriptor to each.
             //Below is an example of setting the first name of the emptyName variable to the string "Blank".
 
-            emptyName.descriptor = randomDescriptor;
-            emptyName.firstName = randomFirstName;
-            emptyName.nickname = randomNickName;
-            emptyName.lastName = randomLastName;
+            emptyName.descriptor = descriptors[Random.Range(0, descriptors.Count)]; 
+            emptyName.firstName = firstNames[Random.Range(0, firstNames.Count)];
+            emptyName.nickname = nicknames[Random.Range(0, nicknames.Count)];
+            emptyName.lastName = lastNames[Random.Range(0, lastNames.Count)];
             names[i] = emptyName;
         }
 
