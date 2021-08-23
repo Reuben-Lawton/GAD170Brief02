@@ -193,7 +193,7 @@ public class Character : MonoBehaviour
     public void DealDamage(float amount)
     {
         
-        if(mojoRemaining <= 1 || mojoRemaining > 0) // if mojo is 100 ie 1 then take away the float  
+        if(mojoRemaining <= 1 || mojoRemaining > 0) // if mojo is equal or less then 1 and greater then 0 then take away the float  
         {
             mojoRemaining = mojoRemaining - amount;
             Debug.Log("The character has " + mojoRemaining + " mojo left.");
